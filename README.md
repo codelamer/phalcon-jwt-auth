@@ -1,6 +1,6 @@
 # phalcon-jwt-auth
 
-A simple JWT middleware for Phalcon Micro to handle stateless authentication.
+A simple /JWT middleware for Phalcon Micro to handle stateless authentication.
 
 ## Installation
 ```bash
