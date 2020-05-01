@@ -10,7 +10,7 @@ or in your composer.json
 ```json
 {
     "require": {
-		"dmkit/phalcon-jwt-auth" : "dev-master"
+		"codelamer/phalcon-jwt-auth" : "dev-phalcon4"
     }
 }
 
