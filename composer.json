@@ -1,19 +1,19 @@
 {
-    "name": "dmkit/phalcon-jwt-auth",
+    "name": "codelamer/phalcon-jwt-auth",
     "description": "A simple JWT middleware for Phalcon Micro to handle stateless authentication",
     "keywords": ["phalcon", "jwt", "authentication"],
     "type": "library",
     "authors": [
         {
-            "name": "Dan Bangayan",
-            "email": "danny.bangayan@gmail.com",
+            "name": "Alexey Sidorov",
+            "email": "lexikus@gmail.com",
             "role": "Developer"
         }
     ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.0",
-        "ext-phalcon": "^3.0",
+        "ext-phalcon": ">=3.0",
         "firebase/php-jwt": "^5.0"
     },
     "autoload": {

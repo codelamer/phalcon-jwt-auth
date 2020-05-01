@@ -30,7 +30,10 @@ class Micro
 
 	// ignored urls
 	protected $ignoreUri;
-
+	
+	// ignore IP
+    private $ignoreIp;
+	
 	// JWT secret key
 	protected $secretKey;
 
@@ -82,6 +85,10 @@ class Micro
 		if(isset($this->config['ignoreUri'])) {
 			$this->ignoreUri = $this->config['ignoreUri'];
 		}
+
+        if (isset($this->config['ignoreIP'])) {
+            $this->ignoreIp = $this->config['ignoreIP'];
+        }
 
 		// secret key is required
 		if(!isset($this->config['secretKey'])) {
@@ -148,6 +155,13 @@ class Micro
 		    		return true;
 		    	}
 
+                if ($auth->isIgnoreIp()) {
+                    if (!$auth->check() && $this->getMessages()[0] != 'missing token') {
+                        return $auth->unauthorized();
+                    }
+                    return true;
+                }
+
 		        if($auth->isIgnoreUri()) {
 		        	/**
 		        	 * Let's try to parse if there's a token
@@ -201,6 +215,26 @@ class Micro
 
 		return false;
 	}
+
+    /**
+     * Checks if the request from IP can bypass the authentication.
+     *
+     * @return bool
+     */
+    public function isIgnoreIp()
+    {
+        if (!$this->ignoreIp) {
+            return false;
+        }
+
+        // access request object
+        $request = $this->app['request'];
+
+        // ip
+        $ip = $request->getClientAddress();
+        return in_array($ip, (array) $this->ignoreIp, true);
+    }
+
 
 	/**
      * Checks if the URI and HTTP METHOD can bypass the authentication.
