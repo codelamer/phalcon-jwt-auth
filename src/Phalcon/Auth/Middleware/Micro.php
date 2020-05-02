@@ -79,7 +79,7 @@ class Micro
 		$this->config = $config ?? $app[self::$configDi]->{self::$configSection};
 
 		if( !is_array($this->config) ) {
-			$this->config = (array) $this->config;			
+			$this->config = $this->config->toArray();			
 		}
 
 		if(isset($this->config['ignoreUri'])) {
