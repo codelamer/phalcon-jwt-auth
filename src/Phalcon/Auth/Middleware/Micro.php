@@ -51,8 +51,8 @@ class Micro extends Injectable
     /**
      * Sets app and config.
      *
-     * @param Phalcon\Mvc\Micro $app
-     * @param array             $config
+     * @param Phalcon\Mvc\Micro  $app
+     * @param array              $config
      *
      */
     public function __construct(MvcMicro $app, array $config = null, Auth $auth = null)
